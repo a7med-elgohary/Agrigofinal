@@ -6,5 +6,6 @@ route.route('/:id')
     .get(getFlowerById)
 route.route("/")
     .get(getAllFLowers)
+route.route('/send')
     .post(photoUpload.fields([{ name: 'image', maxCount: 1 }]) , CreateNewFlower)
 module.exports = route
