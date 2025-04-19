@@ -1,13 +1,12 @@
 const fs = require("fs");
-const tf = require("@tensorflow/tfjs-node");
+const tf = require("@tensorflow/tfjs");
 const { classNames } = require("../config/classNames");
 const { model } = require("../model/modelloader");
+
 const predictImage = async (req, res) => {
   try {
     const imageBuffer = fs.readFileSync(req.file.path);
-
-    const tensor = tf.node
-      .decodeImage(imageBuffer, 3)
+    const tensor = tf.node.image.decodeImage(imageBuffer, 3)
       .resizeBilinear([128, 128])
       .expandDims(0)
       .div(255.0);
