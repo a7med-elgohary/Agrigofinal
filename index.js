@@ -6,9 +6,6 @@ require('dotenv').config()
 const {errorhandler} = require('./middelwares/errorHandler')
 const modelLoader = require("./model/modelloader");
 
-// Initialize model loader
-const modelLoader = require('./model/modelloader');
-
 // Middleware
 app.use(express.json()) 
 app.use(express.urlencoded({ extended: true }))
