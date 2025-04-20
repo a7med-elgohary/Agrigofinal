@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p dist/tfjs && xcopy /E /I tfjs dist\\tfjs",
+    "build": "mkdir -p dist/tfjs && cp -r tfjs/. dist/tfjs/",
     "start": "node index.js",
     "dev": "nodemon index.js",
     "deploy": "npm run build && git add . && git commit -m 'deploy' && git push railway main"
