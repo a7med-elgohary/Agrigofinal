@@ -9,9 +9,10 @@ const loadModel = async () => {
     await tf.ready();
     console.log('TensorFlow.js initialized');
     
-    // Load model from model server
+    // Load model directly from files
     console.log('Loading model...');
-    model = await tf.loadLayersModel('http://localhost:3002/model/model.json');
+    const modelPath = path.join(__dirname, '../tfjs/model.json');
+    model = await tf.loadLayersModel(`file://${modelPath}`);
     console.log('✅ Model loaded successfully');
     
     // Test the model with a test tensor

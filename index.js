@@ -6,8 +6,8 @@ require('dotenv').config()
 const {errorhandler} = require('./middelwares/errorHandler')
 const modelLoader = require("./model/modelloader");
 
-// Start model server
-require('./model/modelServer');
+// Initialize model loader
+const modelLoader = require('./model/modelloader');
 
 // Middleware
 app.use(express.json()) 
@@ -15,7 +15,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 // Serve model files
-app.use('/model', express.static(path.join(__dirname, 'tfjs')))
+// Serve model files directly
+app.use('/model', express.static(path.join(__dirname, 'tfjs')));
 
 // Routes
 app.get('/', (req, res) => {    
