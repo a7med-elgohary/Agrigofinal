@@ -1,4 +1,4 @@
-const tf = require('@tensorflow/tfjs');
+const tf = require('@tensorflow/tfjs-node');
 const path = require('path');
 
 let model;
@@ -11,8 +11,9 @@ const loadModel = async () => {
     
     // Load model directly from files
     console.log('Loading model...');
+    // Load model using Node.js file system
     const modelPath = path.join(__dirname, '../tfjs/model.json');
-    model = await tf.loadLayersModel(`file://${modelPath}`);
+    const model = await tf.loadLayersModel('file://' + modelPath);
     console.log('✅ Model loaded successfully');
     
     // Test the model with a test tensor
